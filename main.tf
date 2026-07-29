@@ -1,7 +1,7 @@
 /**
- * # Fortigate Policy Objects configuration module
+ * # Fortigate VIP configuration module
  *
- * This terraform module configures Policy Objects on a firewall
+ * This terraform module configures VIP and VIP6 objects on a firewall
  */
 terraform {
   required_version = ">= 1.11.0"
