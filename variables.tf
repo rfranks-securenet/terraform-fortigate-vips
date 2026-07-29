@@ -547,24 +547,24 @@ variable "vip6" {
   }))
 
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.src_vip_filter == null || contains(["disen"], o.src_vip_filter)]))
-    error_message = "Parameter `src_vip_filter` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.src_vip_filter == null || contains(["disable", "enable"], o.src_vip_filter)]))
+    error_message = "Parameter `src_vip_filter` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.nat_source_vip == null || contains(["disen"], o.nat_source_vip)]))
-    error_message = "Parameter `nat_source_vip` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.nat_source_vip == null || contains(["disable", "enable"], o.nat_source_vip)]))
+    error_message = "Parameter `nat_source_vip` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.ndp_reply == null || contains(["disen"], o.ndp_reply)]))
-    error_message = "Parameter `ndp_reply` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.ndp_reply == null || contains(["disable", "enable"], o.ndp_reply)]))
+    error_message = "Parameter `ndp_reply` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.arp_reply == null || contains(["disen"], o.arp_reply)]))
-    error_message = "Parameter `arp_reply` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.arp_reply == null || contains(["disable", "enable"], o.arp_reply)]))
+    error_message = "Parameter `arp_reply` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.portforward == null || contains(["disen"], o.portforward)]))
-    error_message = "Parameter `portforward` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.portforward == null || contains(["disable", "enable"], o.portforward)]))
+    error_message = "Parameter `portforward` must be one of `disable`, `enable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.vip6 : o.protocol == null || contains(["tcp", "udp", "sctp"], o.protocol)]))
@@ -579,20 +579,20 @@ variable "vip6" {
     error_message = "Parameter `server_type` must be one of `http`, `https`, `imaps`, `pop3s`, `smtps`, `ssl`, `tcp`, `udp`, `ip`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.http_redirect == null || contains(["endis"], o.http_redirect)]))
-    error_message = "Parameter `http_redirect` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.http_redirect == null || contains(["enable", "disable"], o.http_redirect)]))
+    error_message = "Parameter `http_redirect` must be one of `enable`, `disable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.vip6 : o.persistence == null || contains(["none", "http-cookie", "ssl-session-id"], o.persistence)]))
     error_message = "Parameter `persistence` must be one of `none`, `http-cookie`, `ssl-session-id`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.h2_support == null || contains(["endis"], o.h2_support)]))
-    error_message = "Parameter `h2_support` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.h2_support == null || contains(["enable", "disable"], o.h2_support)]))
+    error_message = "Parameter `h2_support` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.h3_support == null || contains(["endis"], o.h3_support)]))
-    error_message = "Parameter `h3_support` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.h3_support == null || contains(["enable", "disable"], o.h3_support)]))
+    error_message = "Parameter `h3_support` must be one of `enable`, `disable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.vip6 : o.quic == null || o.max_idle_timeout == null || (o.max_idle_timeout >= 1 && o.max_idle_timeout <= 60000)]))
@@ -627,28 +627,28 @@ variable "vip6" {
     error_message = "Parameter `quic.grease_quic_bit` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.nat66 == null || contains(["disen"], o.nat66)]))
-    error_message = "Parameter `nat66` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.nat66 == null || contains(["disable", "enable"], o.nat66)]))
+    error_message = "Parameter `nat66` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.nat64 == null || contains(["disen"], o.nat64)]))
-    error_message = "Parameter `nat64` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.nat64 == null || contains(["disable", "enable"], o.nat64)]))
+    error_message = "Parameter `nat64` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.add_nat64_route == null || contains(["disen"], o.add_nat64_route)]))
-    error_message = "Parameter `add_nat64_route` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.add_nat64_route == null || contains(["disable", "enable"], o.add_nat64_route)]))
+    error_message = "Parameter `add_nat64_route` must be one of `disable`, `enable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.vip6 : o.empty_cert_action == null || contains(["accept", "block", "accept-unmanageable"], o.empty_cert_action)]))
     error_message = "Parameter `empty_cert_action` must be one of `accept`, `block`, `accept-unmanageable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.user_agent_detect == null || contains(["disen"], o.user_agent_detect)]))
-    error_message = "Parameter `user_agent_detect` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.user_agent_detect == null || contains(["disable", "enable"], o.user_agent_detect)]))
+    error_message = "Parameter `user_agent_detect` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.client_cert == null || contains(["disen"], o.client_cert)]))
-    error_message = "Parameter `client_cert` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.client_cert == null || contains(["disable", "enable"], o.client_cert)]))
+    error_message = "Parameter `client_cert` must be one of `disable`, `enable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.vip6 : [for p in o.realservers : p.status == null || contains(["active", "standby", "disable"], p.status)]]))
@@ -659,52 +659,52 @@ variable "vip6" {
     error_message = "Parameter `realservers.healthcheck` must be one of `disable`, `enable`, `vip`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : [for p in o.realservers : p.translate_host == null || contains(["endis"], p.translate_host)]]))
-    error_message = "Parameter `realservers.translate_host` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : [for p in o.realservers : p.translate_host == null || contains(["enable", "disable"], p.translate_host)]]))
+    error_message = "Parameter `realservers.translate_host` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : [for p in o.realservers : p.verify_cert == null || contains(["endis"], p.verify_cert)]]))
-    error_message = "Parameter `realservers.verify_cert` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : [for p in o.realservers : p.verify_cert == null || contains(["enable", "disable"], p.verify_cert)]]))
+    error_message = "Parameter `realservers.verify_cert` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.http_cookie_domain_from_host == null || contains(["disen"], o.http_cookie_domain_from_host)]))
-    error_message = "Parameter `http_cookie_domain_from_host` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.http_cookie_domain_from_host == null || contains(["disable", "enable"], o.http_cookie_domain_from_host)]))
+    error_message = "Parameter `http_cookie_domain_from_host` must be one of `disable`, `enable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.vip6 : o.http_cookie_share == null || contains(["disable", "same-ip"], o.http_cookie_share)]))
     error_message = "Parameter `http_cookie_share` must be one of `disable`, `same-ip`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.https_cookie_secure == null || contains(["disen"], o.https_cookie_secure)]))
-    error_message = "Parameter `https_cookie_secure` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.https_cookie_secure == null || contains(["disable", "enable"], o.https_cookie_secure)]))
+    error_message = "Parameter `https_cookie_secure` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.http_multiplex == null || contains(["endis"], o.http_multiplex)]))
-    error_message = "Parameter `http_multiplex` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.http_multiplex == null || contains(["enable", "disable"], o.http_multiplex)]))
+    error_message = "Parameter `http_multiplex` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.http_ip_header == null || contains(["endis"], o.http_ip_header)]))
-    error_message = "Parameter `http_ip_header` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.http_ip_header == null || contains(["enable", "disable"], o.http_ip_header)]))
+    error_message = "Parameter `http_ip_header` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.outlook_web_access == null || contains(["disen"], o.outlook_web_access)]))
-    error_message = "Parameter `outlook_web_access` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.outlook_web_access == null || contains(["disable", "enable"], o.outlook_web_access)]))
+    error_message = "Parameter `outlook_web_access` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.weblogic_server == null || contains(["disen"], o.weblogic_server)]))
-    error_message = "Parameter `weblogic_server` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.weblogic_server == null || contains(["disable", "enable"], o.weblogic_server)]))
+    error_message = "Parameter `weblogic_server` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.websphere_server == null || contains(["disen"], o.websphere_server)]))
-    error_message = "Parameter `websphere_server` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.websphere_server == null || contains(["disable", "enable"], o.websphere_server)]))
+    error_message = "Parameter `websphere_server` must be one of `disable`, `enable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.vip6 : o.ssl_mode == null || contains(["half", "full"], o.ssl_mode)]))
     error_message = "Parameter `ssl_mode` must be one of `half`, `full`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_upstream == null || contains(["endis"], o.ssl_upstream)]))
-    error_message = "Parameter `ssl_upstream` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_upstream == null || contains(["enable", "disable"], o.ssl_upstream)]))
+    error_message = "Parameter `ssl_upstream` must be one of `enable`, `disable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.vip6 : o.ssl_dh_bits == null || contains(["768", "1024", "1536", "2048", "3072", "4096"], o.ssl_dh_bits)]))
@@ -715,8 +715,8 @@ variable "vip6" {
     error_message = "Parameter `ssl_algorithm` must be one of `high`, `medium`, `low`, `custom`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_server_renegotiation == null || contains(["endis"], o.ssl_server_renegotiation)]))
-    error_message = "Parameter `ssl_server_renegotiation` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_server_renegotiation == null || contains(["enable", "disable"], o.ssl_server_renegotiation)]))
+    error_message = "Parameter `ssl_server_renegotiation` must be one of `enable`, `disable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.vip6 : o.ssl_server_algorithm == null || contains(["high", "medium", "low", "custom", "client"], o.ssl_server_algorithm)]))
@@ -727,16 +727,16 @@ variable "vip6" {
     error_message = "Parameter `ssl_pfs` must be one of `require`, `deny`, `allow`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_accept_ffdhe_groups == null || contains(["endis"], o.ssl_accept_ffdhe_groups)]))
-    error_message = "Parameter `ssl_accept_ffdhe_groups` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_accept_ffdhe_groups == null || contains(["enable", "disable"], o.ssl_accept_ffdhe_groups)]))
+    error_message = "Parameter `ssl_accept_ffdhe_groups` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_send_empty_frags == null || contains(["endis"], o.ssl_send_empty_frags)]))
-    error_message = "Parameter `ssl_send_empty_frags` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_send_empty_frags == null || contains(["enable", "disable"], o.ssl_send_empty_frags)]))
+    error_message = "Parameter `ssl_send_empty_frags` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_client_fallback == null || contains(["disen"], o.ssl_client_fallback)]))
-    error_message = "Parameter `ssl_client_fallback` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_client_fallback == null || contains(["disable", "enable"], o.ssl_client_fallback)]))
+    error_message = "Parameter `ssl_client_fallback` must be one of `disable`, `enable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.vip6 : o.ssl_client_renegotiation == null || contains(["allow", "deny", "secure"], o.ssl_client_renegotiation)]))
@@ -751,36 +751,36 @@ variable "vip6" {
     error_message = "Parameter `ssl_server_session_state_type` must be one of `disable`, `time`, `count`, `both`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_http_location_conversion == null || contains(["endis"], o.ssl_http_location_conversion)]))
-    error_message = "Parameter `ssl_http_location_conversion` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_http_location_conversion == null || contains(["enable", "disable"], o.ssl_http_location_conversion)]))
+    error_message = "Parameter `ssl_http_location_conversion` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_http_match_host == null || contains(["endis"], o.ssl_http_match_host)]))
-    error_message = "Parameter `ssl_http_match_host` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_http_match_host == null || contains(["enable", "disable"], o.ssl_http_match_host)]))
+    error_message = "Parameter `ssl_http_match_host` must be one of `enable`, `disable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_http_strip_secure_cookies == null || contains(["endis"], o.ssl_http_strip_secure_cookies)]))
-    error_message = "Parameter `ssl_http_strip_secure_cookies` must be one of `endis`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_http_strip_secure_cookies == null || contains(["enable", "disable"], o.ssl_http_strip_secure_cookies)]))
+    error_message = "Parameter `ssl_http_strip_secure_cookies` must be one of `enable`, `disable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.vip6 : o.ssl_hpkp == null || contains(["disable", "enable", "report-only"], o.ssl_hpkp)]))
     error_message = "Parameter `ssl_hpkp` must be one of `disable`, `enable`, `report-only`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_hpkp_include_subdomains == null || contains(["disen"], o.ssl_hpkp_include_subdomains)]))
-    error_message = "Parameter `ssl_hpkp_include_subdomains` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_hpkp_include_subdomains == null || contains(["disable", "enable"], o.ssl_hpkp_include_subdomains)]))
+    error_message = "Parameter `ssl_hpkp_include_subdomains` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_hsts == null || contains(["disen"], o.ssl_hsts)]))
-    error_message = "Parameter `ssl_hsts` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_hsts == null || contains(["disable", "enable"], o.ssl_hsts)]))
+    error_message = "Parameter `ssl_hsts` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_hsts_include_subdomains == null || contains(["disen"], o.ssl_hsts_include_subdomains)]))
-    error_message = "Parameter `ssl_hsts_include_subdomains` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.ssl_hsts_include_subdomains == null || contains(["disable", "enable"], o.ssl_hsts_include_subdomains)]))
+    error_message = "Parameter `ssl_hsts_include_subdomains` must be one of `disable`, `enable`."
   }
   validation {
-    condition     = alltrue(flatten([for o in var.vip6 : o.embedded_ipv4_address == null || contains(["disen"], o.embedded_ipv4_address)]))
-    error_message = "Parameter `embedded_ipv4_address` must be one of `disen`."
+    condition     = alltrue(flatten([for o in var.vip6 : o.embedded_ipv4_address == null || contains(["disable", "enable"], o.embedded_ipv4_address)]))
+    error_message = "Parameter `embedded_ipv4_address` must be one of `disable`, `enable`."
   }
   validation {
     condition     = alltrue(flatten([for o in var.vip6 : o.dynamic_sort_subtable == null || contains(["false", "true", "natural", "alphabetical"], o.dynamic_sort_subtable)]))
