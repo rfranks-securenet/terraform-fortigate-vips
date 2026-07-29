@@ -1,0 +1,20 @@
+name: pre-commit
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions: read-all
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v7
+    - uses: actions/setup-python@v7
+    - run: pip install checkov
+    - run: cd /tmp && curl -LO https://github.com/terraform-docs/terraform-docs/releases/download/v0.24.0/terraform-docs-v0.24.0-linux-amd64.tar.gz && tar -xvzf terraform-docs-v0.24.0-linux-amd64.tar.gz && chmod +x terraform-docs && cp terraform-docs /usr/local/bin/
+    - uses: opentofu/setup-opentofu@v2
+    - uses: aquasecurity/setup-trivy@v0.3.1
+    - uses: pre-commit/action@v3.0.1
