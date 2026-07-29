@@ -380,4 +380,3 @@ resource "fortios_firewall_vip6" "vips" {
     }
   }
 }
-
